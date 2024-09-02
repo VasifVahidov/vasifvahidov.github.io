@@ -1,0 +1,260 @@
+/* Latin-ext and Latin Font Faces */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAUi-qNiXg7eU0.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v15/S6u8w4BMUTPHjxsAXC-qNiXg7Q.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_FQftx9897sxZ.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v15/S6u_w4BMUTPHjxsI5wq_Gwftx9897g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: transparent;
+  padding: 20px;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-pic {
+  width: 180px; /* Increase the size of the profile picture */
+  height: 180px; /* Increase the size of the profile picture */
+  border-radius: 50%; /* Keeps the circular shape */
+  margin-right: 20px; /* More space between the image and the name */
+  object-fit: cover; /* Ensures the image covers the box without distortion */
+}
+
+header h1 {
+  font-size: 36px; /* Increase font size for a modern look */
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+  background-color: #fff;
+  flex: 1; /* This makes the main content take up all available space */
+}
+
+section {
+  padding: 20px;
+  max-width: 900px; /* Increase max-width for a more spacious look */
+  margin: auto;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* List Style */
+ol {
+  padding-left: 20px;
+}
+
+ol li {
+  margin-bottom: 20px;
+}
+
+/* Project Section */
+.project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+.project-info {
+  flex: 1;
+}
+
+.project h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.project h3 a {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+.project h3 a:hover {
+  text-decoration: underline;
+}
+
+.project p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.github-icon {
+  font-size: 24px;
+  color: #1772d0; /* GitHub color */
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.github-icon:hover {
+  color: #f09228; /* Hover color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .project {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .github-icon {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+
+.repo-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.repo-link:hover {
+  text-decoration: underline;
+}
+
+.view-all, .blog-link, .contact-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #1772d0;
+  text-decoration: none;
+}
+
+.view-all:hover, .blog-link:hover, .contact-link:hover {
+  color: #f09228;
+}
+
+footer {
+  background-color: transparent;
+  text-align: center;
+  padding: 10px;
+}
+
+.social-links {
+  margin-top: 15px;
+}
+
+.social-links a {
+  color: #1772d0;
+  margin: 0 10px; /* Add more spacing between icons */
+  font-size: 24px; /* Increase the size of social media icons */
+}
+
+.social-links a:hover {
+  color: #f09228;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+/* Blog Section */
+#blogs {
+  padding: 20px;
+  background-color: #fff; /* White background for a clean look */
+  border-top: 1px solid #ddd; /* Light border to separate from the content above */
+}
+
+#blogs h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.blog-item {
+  margin-bottom: 20px;
+}
+
+.blog-item h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.blog-item h3 a {
+  color: #1772d0; /* Matches the link color from projects */
+  text-decoration: none;
+}
+
+.blog-item h3 a:hover {
+  text-decoration: underline;
+}
+
+.blog-item p {
+  font-size: 16px;
+  color: #333; /* Darker text for readability */
+}
