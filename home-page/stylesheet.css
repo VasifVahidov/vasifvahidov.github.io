@@ -59,7 +59,7 @@
 /* General Styles */
 body, html {
   margin: 0;
-  padding: 1000;
+  padding: 100;
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   height: 100%;
   display: flex;
@@ -79,7 +79,7 @@ header {
 }
 
 .profile-pic {
-  width: 10px; /* Increase the size of the profile picture */
+  width: 1000px; /* Increase the size of the profile picture */
   height: 18px; /* Increase the size of the profile picture */
   border-radius: 50%; /* Keeps the circular shape */
   margin-right: 20px; /* More space between the image and the name */
