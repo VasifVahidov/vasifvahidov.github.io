@@ -1,207 +1,102 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vasif Vahidov - Personal Website</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Colors and Typography */
-        :root {
-            --primary-color: #1A202C;
-            --secondary-color: #4A5568;
-            --accent-color: #1f4730;
-            --light-color: #EDF2F7;
-            --button-gradient: linear-gradient(135deg, #2D3748 0%, #4A5568 100%); /* Updated green gradient */
-            --hero-bg-gradient: linear-gradient(135deg, #2D3748 0%, #4A5568 100%);
-            --divider-color: #E2E8F0;
-        }
-
-        /* Global Styles */
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .bg-primary {
-            background-color: var(--primary-color);
-        }
-
-        .text-primary {
-            color: var(--primary-color);
-        }
-
-        .text-secondary {
-            color: var(--secondary-color);
-        }
-
-        .bg-light {
-            background-color: var(--light-color);
-        }
-
-        .hero-bg {
-            background: var(--hero-bg-gradient);
-        }
-
-        .custom-button {
-    background: var(--button-gradient);
-    color: #ffffff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-block;
-    margin-top: 1rem;
-    text-align: center;
-    text-decoration: none;
-}
-
-.custom-button:hover {
-    background: #636866; /* Solid green for hover state */
-    transform: scale(1.05);
-}
-
-        /* Hero Section */
-        .hero-image-container {
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .hero-image-container:hover {
-            transform: scale(1.05);
-        }
-
-        /* Project Cards */
-        .card {
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
-        }
-
-        /* Section Dividers */
-        .section-divider {
-            height: 6px;
-            background: var(--divider-color);
-            margin: 2rem 0;
-            border-radius: 3px;
-        }
-
-        /* Footer */
-        .footer-bg {
-            background: var(--primary-color);
-        }
-
-    </style>
+    <title>Vasif Vahidov</title>
+    <meta name="author" content="Vasif Vahidov">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="https://i.postimg.cc/k4b70hfx/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="bg-light text-secondary">
-    <!-- Header -->
-    <header class="bg-primary shadow-md fixed w-full top-0 left-0 z-50">
-        <nav class="container mx-auto p-6 flex justify-between items-center">
-            <div class="text-2xl font-bold text-white">Vasif Vahidov</div>
-            <ul class="flex space-x-6 text-white">
-                <li><a href="#hero" class="hover:text-gray-300">Home</a></li>
-                <li><a href="work.html" class="hover:text-gray-300">Portfolio</a></li>
-                <li><a href="blog.html" class="hover:text-gray-300">Blog</a></li>
-                <li><a href="contact.html" class="hover:text-gray-300">Contact</a></li>
-            </ul>
-        </nav>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="pic.jpeg" alt="Profile Picture" class="profile-pic">
+            <div>
+                <h1>Vasif Vahidov</h1>
+                <p>Software Engineer</p>
+                <p>
+                    📧 vasif [dot] vahidov [at] gmail [dot] com<br>
+                    📍 Bavaria, Germany
+                </p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/vasifvahidov/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/vasifvahidov" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/w00tech/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.researchgate.net/profile/Vasif-Vahidov" target="_blank" title="ResearchGate"><i class="fas fa-book"></i></a>
+                </div>
+            </div>
+        </div>
     </header>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero-bg text-white py-40 flex items-center justify-center relative">
-        <div class="container mx-auto flex flex-col md:flex-row items-center">
-            <!-- Profile Picture -->
-            <div class="w-full md:w-1/2 text-center md:text-left p-6">
-                <div class="hero-image-container relative">
-                    <img src="pic.jpeg" alt="Vasif Vahidov" class="hero-image w-full h-full object-cover rounded-full">
+    <main>
+        <section>
+            <h2>About</h2>
+            <p>
+                I'm a software engineer with skills in Python, Java, and ERP systems, and a strong focus on business and data analysis using Power BI and Power Query. I create tutorials and write tech blogs, and I plan to learn and teach cloud computing as I continue to grow in my career.
+            </p>
+            <p>
+                I hold a B.Sc. in Computer Science from ADA University and am now studying Digital Technology and Management at OTH Amberg-Weiden in Bavaria, Germany. I also work as a software engineer working student at GT Elektronik GmbH, where I gain practical experience while pursuing my studies.
+            </p>
+        </section>
+        <section>
+            <h2>My Projects</h2>
+            <div class="project">
+                <div class="project-info">
+                    <h3>
+                        <a href="#TBA" class="repo-link">
+                            TBA 🚀
+                        </a>
+                    </h3>
+                    <p><strong>Intro to Cloud Computing ☁️</strong></p>
+                    <p>A tutorial and roadmap to different usages of cloud concepts.</p>
                 </div>
+                <a href="#" class="github-icon" title="View Repository">
+                    <i class="fas fa-book"></i>
+                </a>
             </div>
-            <!-- About Me Section -->
-            <div class="w-full md:w-1/2 text-center md:text-left p-6">
-                <h1 class="text-5xl font-extrabold mb-4 text-white">Welcome to My Personal Website</h1>
-                <p class="text-lg mb-6 text-white">Software Engineer</p>
-                <div class="bg-white text-secondary p-8 rounded-lg shadow-lg">
-                    <p class="text-lg mb-2">
-                        I'm a software engineer specializing in Python, Java, and ERP systems, with a strong focus on business and data analysis using Power BI and Power Query. I’m passionate about sharing my knowledge through tutorials and writing tech blogs, drawing from my experience in software development and my growing interest in cloud computing.                    </p>
+            
+            <div class="project">
+                <div class="project-info">
+                    <h3>
+                        <a href="blog.html" class="repo-link">
+                            Frequency Shop 🛒
+                        </a>
+                    </h3>
+                    <p><strong>Jupyter Notebook 📓</strong></p>
+                    <p>A Python-based solution for grocery expense tracking and optimization.</p>
                 </div>
+                <a href="https://github.com/VasifVahidov/FrequencyShop" class="github-icon" title="View Repository">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Projects Section -->
-    <section id="portfolio" class="py-20 bg-light">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-extrabold mb-10 text-primary">My Projects</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card bg-white">
-                    <h3 class="text-2xl font-bold mb-2 text-primary">E-learn</h3>
-                    <p class="text-secondary mb-2">HTML</p>
-                    <p class="text-secondary">A project focused on learning and practicing HTML.</p>
-                    <a href="https://github.com/vasifvahidov/vasifvahidov.github.io" class="custom-button">View Repository</a>
+            
+            <div class="project">
+                <div class="project-info">
+                    <h3>
+                        <a href="https://github.com/VasifVahidov/ToDoApp-withSpringBoot" class="repo-link">
+                            ToDo app w/SpringBoot ✅
+                        </a>
+                    </h3>
+                    <p><strong>Java ☕</strong></p>
+                    <p>A ToDoApp using Spring Boot and Hibernate.</p>
                 </div>
-                <div class="card bg-white">
-                    <h3 class="text-2xl font-bold mb-2 text-primary">FrequencyShop</h3>
-                    <p class="text-secondary mb-2">Python</p>
-                    <p class="text-secondary">A Python-based solution for grocery expense tracking and optimization.</p>
-                    <a href="https://github.com/vasifvahidov/FrequencyShop" class="custom-button">View Repository</a>
-                </div>
-                <div class="card bg-white">
-                    <h3 class="text-2xl font-bold mb-2 text-primary">ToDoApp-withSpringBoot</h3>
-                    <p class="text-secondary mb-2">Java</p>
-                    <p class="text-secondary">A ToDoApp using Spring Boot and Hibernate.</p>
-                    <a href="https://github.com/vasifvahidov/ToDoApp-withSpringBoot" class="custom-button">View Repository</a>
-                </div>
-
-            <a href="https://github.com/vasifvahidov" class="custom-button mt-8 items-center">View All Projects</a>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Blog Section -->
-    <section id="blog" class="py-20 bg-light">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-extrabold mb-10 text-primary">Blog</h2>
-            <p class="text-secondary mb-10">Stay tuned for updates and articles on various tech topics!</p>
-            <a href="blog.html" class="custom-button">Visit My Blog</a>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-light">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-extrabold mb-10 text-primary">Contact Me</h2>
-            <p class="text-secondary mb-10">Feel free to reach out to me for any inquiries or collaborations.</p>
-            <a href="mailto:vasif.vahidov@example.com" class="custom-button">Get in Touch</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer-bg text-white py-6">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2023 Vasif Vahidov. All Rights Reserved.</p>
-            <p>Follow me on <a href="https://github.com/vasifvahidov" class="text-teal-300 hover:text-teal-500">GitHub</a></p>
-        </div>
+                <a href="https://github.com/VasifVahidov/ToDoApp-withSpringBoot" class="github-icon" title="View Repository">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </section>
+        
+        <section id="blogs">
+            <h2>Blogs</h2>
+            <div class="blog-item">
+                <h3><a href="blog.html" class="repo-link">Master Your Grocery Budget with FrequencyShop 💡</a></h3>
+                <p>A Guide for Students: FrequencyShop helps you manage your grocery budget and learn Python. With tools like NumPy, Matplotlib, and Seaborn, it simplifies expense tracking and budgeting, perfect for beginners and tech enthusiasts!</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Vasif Vahidov. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
