@@ -8,12 +8,74 @@
     <link rel="stylesheet" href="stylesheet.css">
     <link rel="icon" href="icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .toc {
+            margin-bottom: 20px;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        .toc ul li {
+            margin: 5px 0;
+        }
+        .toc ul li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .toc ul li a:hover {
+            text-decoration: underline;
+        }
+        .author-bio {
+            margin-top: 30px;
+            font-style: italic;
+        }
+        .back-home {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+        }
+        .back-home:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            white-space: pre-wrap; /* Allow text wrapping */
+        }
+        @media (max-width: 768px) {
+            pre {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+        }
+    </style>
 </head>
 <body>
     <main>
         <section class="blog-content">
             <h2>Master Your Grocery Budget with FrequencyShop: A Guide for Students in Germany</h2>
-            <p>Hey there, fellow students! 🎓 Balancing studies, work, and living expenses can be quite the juggling act, especially when you’re studying abroad in Germany. As a student, managing your budget effectively is crucial, and that’s where I come in with a brand new tool I’ve been working on. Introducing <strong>FrequencyShop</strong>—your go-to solution for keeping your grocery spending in check while picking up some valuable tech skills along the way.</p>
+            <div class="toc">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#why-frequencyshop">Why FrequencyShop is Perfect for You</a></li>
+                    <li><a href="#what-frequencyshop-do">What Can FrequencyShop Do for You?</a></li>
+                    <li><a href="#getting-started">How to Get Started with FrequencyShop</a></li>
+                    <li><a href="#tools">Why Python and These Tools?</a></li>
+                    <li><a href="#student-life">The Student Life in Germany</a></li>
+                    <li><a href="#journey-together">Let’s Embark on This Journey Together</a></li>
+                    <li><a href="#instructions">Instructions</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                    <li><a href="#example-code">Example Python Code 🐍</a></li>
+                </ul>
+            </div>
+
+            <p id="why-frequencyshop">Hey there, fellow students! 🎓 Balancing studies, work, and living expenses can be quite the juggling act, especially when you’re studying abroad in Germany. As a student, managing your budget effectively is crucial, and that’s where I come in with a brand new tool I’ve been working on. Introducing <strong>FrequencyShop</strong>—your go-to solution for keeping your grocery spending in check while picking up some valuable tech skills along the way.</p>
 
             <h3>Why FrequencyShop is Perfect for You</h3>
             <p>Living in Germany as a student often means tight budgets, careful spending, and making every euro count. FrequencyShop is designed to make this easier for you by automating your grocery budgeting, allowing you to focus more on your studies and less on number-crunching. Whether you’re a coding newbie or a tech enthusiast, this tool has something for everyone:</p>
@@ -24,7 +86,7 @@
                 <li>✨ <strong>Seaborn:</strong> Take your visualizations to the next level with Seaborn. It enhances your charts, making them not only informative but also visually appealing.</li>
             </ul>
 
-            <h3>What Can FrequencyShop Do for You?</h3>
+            <h3 id="what-frequencyshop-do">What Can FrequencyShop Do for You?</h3>
             <p>Let’s break down how FrequencyShop can help you stay on top of your grocery budget:</p>
             <ul>
                 <li>🛒 <strong>Personalize Your Grocery List:</strong> Customize your shopping list based on what you actually buy. Add items and set how often you purchase them. FrequencyShop will do the rest.</li>
@@ -33,7 +95,7 @@
                 <li>💡 <strong>Make Informed Decisions:</strong> With your spending data in hand, you’ll be better equipped to make smarter choices and stick to your budget.</li>
             </ul>
 
-            <h3>How to Get Started with FrequencyShop</h3>
+            <h3 id="getting-started">How to Get Started with FrequencyShop</h3>
             <p>Ready to dive in? Getting started with FrequencyShop is simple, even if you’ve never coded before. Here’s how you can begin:</p>
             <ol>
                 <li>🔗 <strong>Access the Script:</strong> Head over to my Linktree (linked in my bio) to find the full FrequencyShop script.</li>
@@ -41,7 +103,7 @@
                 <li>📚 <strong>Follow Along:</strong> I’ll guide you through the process step by step. No need to rush—we’ll take our time to ensure you understand everything.</li>
             </ol>
 
-            <h3>Why Python and These Tools?</h3>
+            <h3 id="tools">Why Python and These Tools?</h3>
             <p>You might be wondering, why Python? Why NumPy, Matplotlib, and Seaborn? Here’s why these tools are perfect for a project like FrequencyShop:</p>
             <ul>
                 <li>🐍 <strong>Python:</strong> Python is a versatile, beginner-friendly programming language that’s widely used in data science, automation, and more. It’s the backbone of FrequencyShop, handling everything from data calculations to visualizations.</li>
@@ -50,83 +112,86 @@
                 <li>✨ <strong>Seaborn:</strong> Built on top of Matplotlib, Seaborn enhances the aesthetic of your charts, making them not only functional but also visually appealing.</li>
             </ul>
 
-            <h3>The Student Life in Germany</h3>
+            <h3 id="student-life">The Student Life in Germany</h3>
             <p>If you’re a student in Germany, you know how crucial it is to keep a close eye on your budget. Groceries can be a significant part of your monthly expenses, especially when you’re balancing rent, tuition, and social activities. FrequencyShop is designed with this in mind, helping you track your grocery spending so that you can enjoy your student life without worrying too much about finances.</p>
 
-            <h3>Let’s Embark on This Journey Together</h3>
+            <h3 id="journey-together">Let’s Embark on This Journey Together</h3>
             <p>I’m really excited about FrequencyShop and I hope you are too! This tool isn’t just about budgeting—it’s about learning new skills, embracing technology, and making life as a student a little bit easier. Whether you’re a full-time student or working part-time to support your studies, FrequencyShop can help you manage your finances more effectively.</p>
             <p>Be sure to check out the link in my bio for the full FrequencyShop script. Let’s make budgeting something you actually enjoy!</p>
 
-            <h3>Instructions</h3>
+            <h3 id="instructions">Instructions</h3>
             <ol>
-                <li>📑 <strong>Step 1: Setting Up Google Colab</strong><br> First, you’ll need to access Google Colab, a free platform that allows you to run Python code in your web browser.</li>
-                <li>🔍 <strong>Step 2: Understanding the Basics</strong><br> Before we dive into the script, let's briefly go over the tools you'll be using:</li>
-                <li>▶️ <strong>Step 3: Running the Script</strong><br> Copy the FrequencyShop script from my Linktree and paste it into your new Google Colab notebook.</li>
-                <li>🔧 <strong>Step 4: Personalizing the Tool</strong><br> Now it’s time to make FrequencyShop work for you:</li>
+                <li>📑 <strong>Step 1: Setting Up Google Colab</strong><br> First, visit Google Colab and create a new notebook.</li>
+                <li>📋 <strong>Step 2: Copy the Script</strong><br> Copy the FrequencyShop script from the provided link and paste it into your Colab notebook.</li>
+                <li>🔍 <strong>Step 3: Run the Code</strong><br> Execute the code cells in your Colab notebook to start using FrequencyShop.</li>
+                <li>📊 <strong>Step 4: Visualize and Analyze</strong><br> Use the generated charts to review your grocery spending.</li>
             </ol>
 
-            <h3>Conclusion</h3>
-            <p>Congratulations! 🎉 You’ve just taken a significant step toward mastering your grocery budget. FrequencyShop is more than just a budgeting tool—it’s a learning experience that will help you develop valuable skills while managing your finances more effectively.</p>
-            <p>Stay tuned for more updates, and don’t hesitate to reach out if you have any questions or need help along the way. Happy budgeting! 💪</p>
+            <h3 id="conclusion">Conclusion</h3>
+            <p>FrequencyShop is here to make managing your grocery budget simpler and more efficient. With easy-to-follow instructions and powerful tools, you’ll be on your way to mastering your finances in no time. Dive in and start exploring the possibilities today!</p>
 
-            <h3>Example Python Code 🐍</h3>
-            <p>This is a simple example of a Python function:</p>
-            <pre><code>
-                import numpy as np
-                import matplotlib.pyplot as plt
-                import seaborn as sns
-                import pandas as pd
+            <h3 id="example-code">Example Python Code 🐍</h3>
+            <pre>
+<code>
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import pandas as pd
+    
+    # List of grocery items
+    items = ['Apples', 'Bananas', 'Bread', 'Milk', 'Eggs']
+    
+    # Prices of each item
+    prices = np.array([1.20, 0.50, 2.00, 1.50, 3.00])
+    
+    # Frequency of purchase per week
+    frequency_per_week = np.array([3, 7, 2, 5, 1])
+    
+    # Calculate weekly expenses
+    weekly_expenses = prices * frequency_per_week
+    
+    # Calculate total weekly expense
+    total_weekly_expense = np.sum(weekly_expenses)
+    
+    # Calculate monthly expenses (assuming 4 weeks in a month)
+    monthly_expenses = total_weekly_expense * 4
+    
+    # Print out the results
+    print(f"Weekly Expenses: ${total_weekly_expense:.2f}")
+    print(f"Monthly Expenses: ${monthly_expenses:.2f}")
+    
+    # Create a DataFrame for plotting
+    data = pd.DataFrame({
+        'Item': items,
+        'Expense': weekly_expenses
+    })
+    
+    # Create a bar chart for weekly expenses
+    plt.figure(figsize=(12, 6))
+    sns.barplot(x='Item', y='Expense', data=data, palette="viridis")
+    plt.title("Weekly Grocery Expenses")
+    plt.xlabel("Items")
+    plt.ylabel("Cost ($)")
+    plt.tight_layout()
+    plt.show()
+    
+    # Use Seaborn's style to enhance the plot
+    sns.set(style="whitegrid")
+    
+    # Enhanced bar chart
+    plt.figure(figsize=(12, 6))
+    sns.barplot(x='Item', y='Expense', data=data, palette="coolwarm")
+    plt.title("Enhanced Weekly Grocery Expenses")
+    plt.xlabel("Items")
+    plt.ylabel("Cost ($)")
+    plt.tight_layout()
+    plt.show()
+</code>
+            </pre>
 
-                # List of grocery items
-                items = ['Apples', 'Bananas', 'Bread', 'Milk', 'Eggs']
-
-                # Prices of each item
-                prices = np.array([1.20, 0.50, 2.00, 1.50, 3.00])
-
-                # Frequency of purchase per week
-                frequency_per_week = np.array([3, 7, 2, 5, 1])
-
-                # Calculate weekly expenses
-                weekly_expenses = prices * frequency_per_week
-
-                # Calculate total weekly expense
-                total_weekly_expense = np.sum(weekly_expenses)
-
-                # Calculate monthly expenses (assuming 4 weeks in a month)
-                monthly_expenses = total_weekly_expense * 4
-
-                # Print out the results
-                print(f"Weekly Expenses: ${total_weekly_expense:.2f}")
-                print(f"Monthly Expenses: ${monthly_expenses:.2f}")
-
-                # Create a DataFrame for plotting
-                data = pd.DataFrame({
-                    'Item': items,
-                    'Expense': weekly_expenses
-                })
-
-                # Create a bar chart for weekly expenses
-                plt.figure(figsize=(12, 6))
-                sns.barplot(x='Item', y='Expense', data=data, palette="viridis")
-                plt.title("Weekly Grocery Expenses")
-                plt.xlabel("Items")
-                plt.ylabel("Cost ($)")
-                plt.tight_layout()
-                plt.show()
-
-                # Use Seaborn's style to enhance the plot
-                sns.set(style="whitegrid")
-
-                # Enhanced bar chart
-                plt.figure(figsize=(12, 6))
-                sns.barplot(x='Item', y='Expense', data=data, palette="coolwarm")
-                plt.title("Enhanced Weekly Grocery Expenses")
-                plt.xlabel("Items")
-                plt.ylabel("Cost ($)")
-                plt.tight_layout()
-                plt.show()
-            </code></pre>
+            <a href="index.html" class="back-home">Back to Home</a>
         </section>
     </main>
 </body>
 </html>
+
