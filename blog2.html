@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Certification Pathway Blog</title>
+    <meta name="author" content="Your Name">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- Back Button to navigate back to home -->
+        <button onclick="goBack()" style="padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">⬅️ Back to Home</button>
+    </header>
+
+    <main>
+        <section class="blog-content">
+            <h2>Understanding AWS Certification Pathway 🛣️</h2>
+            <p>Hey there! 👋 Ready to dive into the world of cloud computing with AWS? You're in the right place! In this blog, we'll be walking through what AWS certifications are, why they matter, and how they can help launch or level up your career.</p>
+
+            <h3>What is AWS? ☁️</h3>
+            <p>First things first, AWS stands for <strong>Amazon Web Services</strong>. It’s a cloud platform offering everything from storage to machine learning and more...</p>
+            
+            <h3>Why Get AWS Certified? 🎓</h3>
+            <p>You might be wondering: "Do I really need a certification?" The answer depends on your goals...</p>
+
+            <h3>AWS Certification Pathways 🛤️</h3>
+            <p>AWS offers <strong>12 certifications</strong>, broken into four levels: Foundational, Associate, Professional, and Specialty...</p>
+
+            <h3>Focus on AWS Certified Cloud Practitioner 🌱</h3>
+            <p>Since we’re starting with the basics, let’s dive into the AWS Certified Cloud Practitioner exam...</p>
+
+            <h3>What’s Next? 📅</h3>
+            <p>Here’s the exciting part: I’m going to be doing hands-on tutorials in my upcoming blogs! 🚀 Not only will you be reading about AWS, but you'll also get to follow along with interactive exercises...</p>
+
+            <h3>Wrap-Up 🎉</h3>
+            <p>That’s it for today’s blog! AWS certifications are an awesome way to boost your cloud computing knowledge and prove your skills...</p>
+        </section>
+
+        <!-- Comment Section -->
+        <section class="comment-section">
+            <h3>Leave a Comment</h3>
+            <form id="commentForm">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="comment">Comment:</label><br>
+                <textarea id="comment" name="comment" rows="5" required></textarea><br><br>
+
+                <button type="submit">Submit Comment</button>
+            </form>
+            <div id="confirmationMessage" style="display: none; margin-top: 10px;">
+                <p>Thank you for your comment! It will be reviewed by the admin before appearing.</p>
+            </div>
+
+            <!-- Placeholder for approved comments -->
+            <div id="commentsSection">
+                <h3>Approved Comments:</h3>
+                <p>No comments yet. Be the first to comment!</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Back button functionality
+        function goBack() {
+            window.history.back();
+        }
+
+        // Comment form submission handling
+        const form = document.getElementById('commentForm');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        const commentsSection = document.getElementById('commentsSection');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            confirmationMessage.style.display = 'block'; // Show confirmation message
+            form.reset(); // Clear the form
+        });
+    </script>
+</body>
+</html>
