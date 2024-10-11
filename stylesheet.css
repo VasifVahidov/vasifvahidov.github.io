@@ -262,8 +262,7 @@
   /* Blog Header as Button */
 .blog-header {
   display: inline-block;
-  padding: 7px 13px;
-  background-color: #e3e3e3; /* A shade of blue, you can change this */
+  padding: 7px;
   color: rgb(0, 0, 0);
   text-decoration: none;
   border-radius: 10px; /* Rounded edges */
@@ -275,8 +274,7 @@
 }
 
 .blog-header:hover {
-  background-color: #9e9e9e; /* A slightly darker shade for hover */
-  border-color: #a1a1a1; /* Adds a subtle border when hovered */
+  background-color: #dedede; /* A slightly darker shade for hover */
 }
 
 .blog-header:focus, .blog-header:active {
@@ -293,3 +291,4 @@
   font-size: 16px;
   margin: 0;
 }
+
