@@ -1,67 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogs - Vasif Vahidov</title>
-    <meta name="author" content="Vasif Vahidov">
-    <link rel="stylesheet" href="/stylesheet.css">
-    <link rel="icon" href="/icon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <img src="/pic.jpeg" alt="Profile Picture" class="profile-pic">
-            <div>
-                <h1>Vasif Vahidov</h1>
-                <p>Software Engineer</p>
-                <p>
-                    📧 vasif [dot] vahidov [at] gmail [dot] com<br>
-                    📍 Bavaria, Germany
-                </p>                            
-            </div>
+
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+      <h1>Exploring Ideas</h1>
+    </div>
+  </header>
+
+  <!-- Main Content Section -->
+  <main>
+    <!-- Categories Section -->
+    <section id="categories" class="content-section">
+      <h2>Categories</h2>
+      <div class="category-list">
+        <!-- Projects Category -->
+        <div class="category">
+          <h3 class="category-heading">Projects</h3>
+          <div class="post">
+            <h4><a href="/blog/FrequencyShop" class="post-link">Frequency Shop 🛒</a></h4>
+            <p class="post-description">An overview of innovative shopping systems.</p>
+          </div>
         </div>
-    </header>
+        <!-- Tech Updates Category -->
+        <div class="category">
+          <h3 class="category-heading">Tech Updates</h3>
+          <div class="post">
+            <h4><a href="/blog/TechTrends" class="post-link">Latest in Tech 🔧</a></h4>
+            <p class="post-description">Stay updated with the latest trends in technology.</p>
+          </div>
+        </div>
+        <!-- Stories Category -->
+        <div class="category">
+          <h3 class="category-heading">Stories</h3>
+          <div class="post">
+            <h4><a href="/blog/Travel" class="post-link">Travel Packing Guide ✈️</a></h4>
+            <p class="post-description">A guide to packing for your next adventure.</p>
+          </div>
+        </div>
+        <!-- Tutorials Category -->
+        <div class="category">
+          <h3 class="category-heading">Tutorials</h3>
+          <div class="post">
+            <h4><a href="/blog/AWS-roadmap" class="post-link">AWS Roadmap 🚀</a></h4>
+            <p class="post-description">Learn how to master AWS and cloud infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Latest Posts Section -->
+    <section id="latest-posts" class="latest-posts">
+      <h2>Latest Posts</h2>
+      <div class="latest-post-list">
+        <!-- Latest Post 1 -->
+        <div class="latest-post">
+          <h4><a href="/blog/AI-Advancements" class="post-link">AI Advancements 🤖</a></h4>
+          <p class="latest-post-description">Exploring the future of artificial intelligence and its potential.</p>
+        </div>
+        <!-- Latest Post 2 -->
+        <div class="latest-post">
+          <h4><a href="/blog/Cloud-Architecture" class="post-link">Cloud Architecture ☁️</a></h4>
+          <p class="latest-post-description">A deep dive into designing scalable cloud architecture.</p>
+        </div>
+        <!-- Latest Post 3 -->
+        <div class="latest-post">
+          <h4><a href="/blog/Remote-Work-Tips" class="post-link">Remote Work Tips 🏡</a></h4>
+          <p class="latest-post-description">Best practices for staying productive while working from home.</p>
+        </div>
+        <!-- Latest Post 4 -->
+        <div class="latest-post">
+          <h4><a href="/blog/Blockchain-Explained" class="post-link">Blockchain Explained 🔗</a></h4>
+          <p class="latest-post-description">A comprehensive guide to understanding blockchain technology.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Call to Action Section -->
+    <div class="action-buttons">
+      <a href="/" class="btn btn-home">Back to Home</a>
+      <a href="mailto:vasifvvahidov@gmail.com" class="btn btn-contact">Contact</a>
+    </div>
+  </main>
 
-    <main>
-        <section>
-            <h2>Blog Categories</h2>
-
-            <!-- AWS Roadmap Category -->
-            <div class="category">
-                <h3>AWS Roadmap ☁️</h3>
-                <ul>
-                    <li><a href="/blog/AWS-roadmap" class="repo-link">Roadmap to AWS Cloud Practitioner 🛣️</a></li>
-                    <li><a href="/blog/AWS-roadmap/additional-post.html" class="repo-link">Advanced AWS Tips 🚀</a></li>
-                </ul>
-            </div>
-
-            <!-- Frequency Shop Category -->
-            <div class="category">
-                <h3>Frequency Shop 🛒</h3>
-                <ul>
-                    <li><a href="/blog/FrequencyShop" class="repo-link">Master Your Grocery Budget with FrequencyShop 💡</a></li>
-                    <li><a href="/blog/FrequencyShop/more-tips.html" class="repo-link">Optimize Your Grocery Shopping 🛍️</a></li>
-                </ul>
-            </div>
-
-            <!-- Travel Tips Category -->
-            <div class="category">
-                <h3>Travel Tips ✈️</h3>
-                <ul>
-                    <li><a href="/blog/travel-tips/packing-guide" class="repo-link">How to Pack Efficiently for a Trip 🎒</a></li>
-                    <li><a href="/blog/travel-tips/budget-travel" class="repo-link">Budget Travel Tips for Students 💼</a></li>
-                    <li><a href="/blog/travel-tips/roadtrip-planning" class="repo-link">Planning a Road Trip: Essentials 🚗</a></li>
-                </ul>
-            </div>
-
-        </section>
-        <a href="/" class="back-home">Back to Home</a>
-    </main>
-
-    <footer>
-        <p>© 2024 Vasif Vahidov. All Rights Reserved.</p>
-    </footer>
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Vasif Vahidov. All rights reserved.</p>
+  </footer>
+  
 </body>
 </html>
