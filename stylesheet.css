@@ -259,3 +259,37 @@
     font-size: 16px;
     color: #333; /* Darker text for readability */
   }
+  /* Blog Header as Button */
+.blog-header {
+  display: inline-block;
+  padding: 7px 13px;
+  background-color: #e3e3e3; /* A shade of blue, you can change this */
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  border-radius: 10px; /* Rounded edges */
+  font-weight: bold;
+  font-size: 1.7rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  border: 2px solid transparent; /* Adds a border, change color below */
+}
+
+.blog-header:hover {
+  background-color: #9e9e9e; /* A slightly darker shade for hover */
+  border-color: #a1a1a1; /* Adds a subtle border when hovered */
+}
+
+.blog-header:focus, .blog-header:active {
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Adds a focus effect for accessibility */
+}
+
+.blog-item h3 {
+  margin: 15px 0;
+  font-size: 20px;
+}
+
+.blog-item p {
+  font-size: 16px;
+  margin: 0;
+}
