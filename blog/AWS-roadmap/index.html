@@ -1,90 +1,153 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Understanding AWS Certification Pathway 🛣️</title>
     <meta name="author" content="Vasif Vahidov">
-    <link rel="stylesheet" href="/stylesheet.css">
     <link rel="icon" href="icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        h1, h2, h3 {
-            margin-top: 0;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
+
+        .blog-content {
+            background: white;
+            border: 1px solid #e1e5e9;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
         h1 {
-            font-size: 1.8em;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 25px;
         }
+
         h2 {
-            font-size: 1.4em;
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
         }
+
         h3 {
-            font-size: 1.2em;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            color: #2c3e50;
         }
+
         p {
-            margin: 0 0 15px;
+            line-height: 1.7;
+            margin-bottom: 15px;
         }
-        ul, ol {
-            margin: 0 0 15px 20px;
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
         }
+
+        li {
+            margin-bottom: 8px;
+        }
+
         pre {
-            background: #eaeaea;
-            padding: 10px;
-            border-radius: 5px;
-            overflow: auto;
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.95rem;
         }
+
         code {
-            background: #f4f4f4;
-            padding: 2px 4px;
-            border-radius: 3px;
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
         }
+
         a {
             color: #007bff;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         .toc {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border: 1px solid #e1e5e9;
+            border-radius: 6px;
         }
+
+        .toc h3 {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
         .toc ul {
             list-style: none;
-            padding: 0;
+            padding-left: 0;
         }
-        .toc ul li {
-            margin: 5px 0;
+
+        .toc li {
+            margin-bottom: 8px;
         }
-        .toc ul li a {
-            text-decoration: none;
-            color: #007bff;
+
+        .toc a {
+            color: #3498db;
+            font-weight: 500;
         }
-        .toc ul li a:hover {
-            text-decoration: underline;
+
+        .toc a:hover {
+            color: #2c3e50;
         }
+
         .back-home {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
             display: block;
             width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 5px;
+            margin: 40px auto 0;
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s ease;
         }
+
         .back-home:hover {
-            background-color: #0056b3;
+            background-color: #34495e;
         }
+
         @media (max-width: 768px) {
+            body {
+                padding: 25px 15px;
+            }
+
+            .blog-content {
+                padding: 25px 20px;
+            }
+
             pre {
-                font-size: 14px;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
+
 <body>
     <main>
         <section class="blog-content">
@@ -103,81 +166,118 @@
                 </ul>
             </div>
 
-            <p id="what-is-aws">Hey there! 👋 Ready to dive into the world of cloud computing with AWS? You're in the right place! In this blog, we'll be walking through what AWS certifications are, why they matter, and how they can help launch or level up your career.</p>
+
+            <p id="what-is-aws">Hey there! 👋 Ready to dive into the world of cloud computing with AWS? You're in the
+                right place! In this blog, we'll be walking through what AWS certifications are, why they matter, and
+                how they can help launch or level up your career.</p>
 
             <h2>What is AWS? ☁️</h2>
-            <p>First things first, AWS stands for Amazon Web Services. It’s a cloud platform offering everything from storage to machine learning and more. Imagine you’re running a business and need servers, databases, or even tools for AI. With AWS, you don’t need to buy expensive hardware – you can access these resources on-demand through the internet (aka the cloud).</p>
-            <p>Now, AWS offers certifications that prove your skills in using their services. This is where you come in! Getting certified shows employers that you’re ready to work in the cloud world, with all its fancy tech.</p>
+            <p>First things first, AWS stands for Amazon Web Services. It’s a cloud platform offering everything from
+                storage to machine learning and more. Imagine you’re running a business and need servers, databases, or
+                even tools for AI. With AWS, you don’t need to buy expensive hardware – you can access these resources
+                on-demand through the internet (aka the cloud).</p>
+            <p>Now, AWS offers certifications that prove your skills in using their services. This is where you come in!
+                Getting certified shows employers that you’re ready to work in the cloud world, with all its fancy tech.
+            </p>
 
             <h2 id="why-certify">Why Get AWS Certified? 🎓</h2>
-            <p>You might be wondering: "Do I really need a certification?" The answer depends on your goals. Here’s why an AWS certification could be a great move:</p>
+            <p>You might be wondering: "Do I really need a certification?" The answer depends on your goals. Here’s why
+                an AWS certification could be a great move:</p>
             <ul>
-                <li>🚀 <strong>Career Growth:</strong> Whether you’re new to tech or a seasoned pro, AWS certifications can open doors to new opportunities and higher-paying jobs.</li>
-                <li>🛠️ <strong>Hands-on Experience:</strong> AWS certifications are not just about memorizing facts. They push you to get practical, real-world skills that are highly valuable.</li>
-                <li>🏆 <strong>Industry Recognition:</strong> AWS is the leading cloud provider, and their certifications are widely recognized in the industry.</li>
+                <li>🚀 <strong>Career Growth:</strong> Whether you’re new to tech or a seasoned pro, AWS certifications
+                    can open doors to new opportunities and higher-paying jobs.</li>
+                <li>🛠️ <strong>Hands-on Experience:</strong> AWS certifications are not just about memorizing facts.
+                    They push you to get practical, real-world skills that are highly valuable.</li>
+                <li>🏆 <strong>Industry Recognition:</strong> AWS is the leading cloud provider, and their
+                    certifications are widely recognized in the industry.</li>
             </ul>
 
             <h2 id="certification-pathways">AWS Certification Pathways 🛤️</h2>
-            <p>AWS offers 12 certifications, broken into four levels: Foundational, Associate, Professional, and Specialty.</p>
+            <p>AWS offers 12 certifications, broken into four levels: Foundational, Associate, Professional, and
+                Specialty.</p>
 
             <h3>Foundational Level:</h3>
             <ul>
-                <li>AWS Certified Cloud Practitioner: This is where you start. It covers the basics of AWS and cloud computing. No technical background? No problem! This is perfect for beginners. 🤓</li>
+                <li>AWS Certified Cloud Practitioner: This is where you start. It covers the basics of AWS and cloud
+                    computing. No technical background? No problem! This is perfect for beginners. 🤓</li>
             </ul>
 
             <h3>Associate Level:</h3>
             <ul>
                 <li>AWS Certified Solutions Architect – Associate: Focuses on designing systems on AWS.</li>
                 <li>AWS Certified Developer – Associate: For developers working on AWS-based applications.</li>
-                <li>AWS Certified SysOps Administrator – Associate: Targets system administrators and operational roles.</li>
+                <li>AWS Certified SysOps Administrator – Associate: Targets system administrators and operational roles.
+                </li>
             </ul>
 
             <h3>Professional Level:</h3>
             <ul>
-                <li>AWS Certified Solutions Architect – Professional: Builds on the associate level but dives deeper into architecture and design.</li>
-                <li>AWS Certified DevOps Engineer – Professional: For those specializing in automation, development, and operations.</li>
+                <li>AWS Certified Solutions Architect – Professional: Builds on the associate level but dives deeper
+                    into architecture and design.</li>
+                <li>AWS Certified DevOps Engineer – Professional: For those specializing in automation, development, and
+                    operations.</li>
             </ul>
 
             <h3>Specialty Certifications:</h3>
             <ul>
-                <li>These are for advanced skills in areas like Security, Machine Learning, Networking, and Databases. Think of these as the "niche" certifications. 🎯</li>
+                <li>These are for advanced skills in areas like Security, Machine Learning, Networking, and Databases.
+                    Think of these as the "niche" certifications. 🎯</li>
             </ul>
 
             <h2 id="focus-on-cloud-practitioner">Focus on AWS Certified Cloud Practitioner 🌱</h2>
-            <p>Since we’re starting with the basics, let’s dive into the AWS Certified Cloud Practitioner exam. This is an entry-level certification and the perfect first step if you’re new to cloud computing.</p>
+            <p>Since we’re starting with the basics, let’s dive into the AWS Certified Cloud Practitioner exam. This is
+                an entry-level certification and the perfect first step if you’re new to cloud computing.</p>
             <p>Here’s what you’ll learn:</p>
             <ul>
-                <li><strong>Cloud Concepts:</strong> What is cloud computing, and why is it transforming industries?</li>
-                <li><strong>AWS Core Services:</strong> Get familiar with popular AWS services like EC2, S3, and RDS.</li>
-                <li><strong>Security & Compliance:</strong> How does AWS keep your data safe? Learn about the shared responsibility model.</li>
-                <li><strong>Billing & Pricing:</strong> Understand how AWS services are priced, and how to optimize costs.</li>
+                <li><strong>Cloud Concepts:</strong> What is cloud computing, and why is it transforming industries?
+                </li>
+                <li><strong>AWS Core Services:</strong> Get familiar with popular AWS services like EC2, S3, and RDS.
+                </li>
+                <li><strong>Security & Compliance:</strong> How does AWS keep your data safe? Learn about the shared
+                    responsibility model.</li>
+                <li><strong>Billing & Pricing:</strong> Understand how AWS services are priced, and how to optimize
+                    costs.</li>
             </ul>
-            <p>This certification is for everyone, whether you're a developer, project manager, or someone just curious about the cloud. 🧐</p>
+            <p>This certification is for everyone, whether you're a developer, project manager, or someone just curious
+                about the cloud. 🧐</p>
 
             <h2 id="certification-process">The Certification Process 📝</h2>
             <p>To get certified, here’s a simple roadmap you can follow:</p>
             <ol>
-                <li><strong>Study the Exam Guide:</strong> AWS provides an exam guide that outlines what you need to know. You can download it from the AWS website.</li>
-                <li><strong>Use AWS Training:</strong> AWS has free training resources like AWS Skill Builder. It’s a great way to start learning the fundamentals.</li>
-                <li><strong>Hands-On Practice:</strong> The more you practice, the better! Sign up for an AWS Free Tier account and try out some of the services.</li>
-                <li><strong>Take Practice Exams:</strong> Before taking the real exam, try a few practice tests. They help you get used to the question format and timing.</li>
-                <li><strong>Schedule the Exam:</strong> When you’re ready, schedule your exam through the AWS Certification website. You can choose to take it at a testing center or online.</li>
+                <li><strong>Study the Exam Guide:</strong> AWS provides an exam guide that outlines what you need to
+                    know. You can download it from the AWS website.</li>
+                <li><strong>Use AWS Training:</strong> AWS has free training resources like AWS Skill Builder. It’s a
+                    great way to start learning the fundamentals.</li>
+                <li><strong>Hands-On Practice:</strong> The more you practice, the better! Sign up for an AWS Free Tier
+                    account and try out some of the services.</li>
+                <li><strong>Take Practice Exams:</strong> Before taking the real exam, try a few practice tests. They
+                    help you get used to the question format and timing.</li>
+                <li><strong>Schedule the Exam:</strong> When you’re ready, schedule your exam through the AWS
+                    Certification website. You can choose to take it at a testing center or online.</li>
             </ol>
 
             <h2 id="whats-next">What’s Next? 📅</h2>
             <p>Once you’re certified, it’s time to put your skills to use. Here’s what you can do next:</p>
             <ul>
-                <li>🛠️ <strong>Build Projects:</strong> Use your newfound skills to work on real-world projects or contribute to open-source initiatives.</li>
-                <li>📈 <strong>Advance Your Career:</strong> Look for roles that value AWS skills, or use your certification to move into a more technical or managerial role.</li>
-                <li>🎓 <strong>Continue Learning:</strong> AWS offers a variety of certifications. As you grow, you might consider moving up to associate or professional certifications.</li>
+                <li>🛠️ <strong>Build Projects:</strong> Use your newfound skills to work on real-world projects or
+                    contribute to open-source initiatives.</li>
+                <li>📈 <strong>Advance Your Career:</strong> Look for roles that value AWS skills, or use your
+                    certification to move into a more technical or managerial role.</li>
+                <li>🎓 <strong>Continue Learning:</strong> AWS offers a variety of certifications. As you grow, you
+                    might consider moving up to associate or professional certifications.</li>
             </ul>
 
             <h2 id="wrap-up">Wrap-Up 🎉</h2>
-            <p>Getting AWS certified is a fantastic way to start your journey in cloud computing. It’s a learning experience that opens up numerous opportunities in the tech world. Remember, it’s not just about passing an exam—it’s about gaining skills that will help you in your career.</p>
-            <p>Good luck on your certification journey! If you have any questions or need help, feel free to reach out. I’m here to support you. 🌟</p>
+            <p>Getting AWS certified is a fantastic way to start your journey in cloud computing. It’s a learning
+                experience that opens up numerous opportunities in the tech world. Remember, it’s not just about passing
+                an exam—it’s about gaining skills that will help you in your career.</p>
+            <p>Good luck on your certification journey! If you have any questions or need help, feel free to reach out.
+                I’m here to support you. 🌟</p>
 
-            <a href="/" class="back-home">Back to Home</a>
+
+            <a href="/blog" class="back-home">← Back</a>
         </section>
     </main>
 </body>
+
 </html>
