@@ -1,110 +1,453 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vasif Vahidov</title>
     <meta name="author" content="Vasif Vahidov">
-    <link rel="stylesheet" href="stylesheet.css">
     <link rel="icon" href="icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #e1e5e9;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
+
+        .header-info h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .header-info>p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .contact-info p {
+            color: #666;
+            margin: 2px 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            color: #666;
+            font-size: 18px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* Main sections */
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border: 1px solid #e1e5e9;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* About section */
+        .about p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        /* Projects */
+        .project {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s ease;
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project:hover {
+            background-color: #f8f9fa;
+            margin: 0 -15px;
+            padding: 20px 15px;
+            border-radius: 6px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .project-info h3 a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .project-info h3 a:hover {
+            color: #3498db;
+        }
+
+        .project-tech {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .project-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .github-icon {
+            color: #666;
+            font-size: 20px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: color 0.2s ease;
+            margin-top: 5px;
+        }
+
+        .github-icon:hover {
+            color: #333;
+        }
+
+        /* Blogs section */
+        .blog-header {
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .blog-header:hover {
+            color: #3498db;
+        }
+
+        .blogs-intro {
+            color: #666;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .blog-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s ease;
+        }
+
+        .blog-item:last-child {
+            border-bottom: none;
+        }
+
+        .blog-item:hover {
+            background-color: #f8f9fa;
+            margin: 0 -15px;
+            padding: 18px 15px;
+            border-radius: 6px;
+        }
+
+        .blog-item h3 {
+            margin-bottom: 10px;
+        }
+
+        .blog-item h3 a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .blog-item h3 a:hover {
+            color: #3498db;
+        }
+
+        .blog-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .header-info h1 {
+                font-size: 1.8rem;
+            }
+
+            section,
+            header {
+                padding: 20px;
+            }
+
+            .project {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .github-icon {
+                align-self: flex-start;
+            }
+        }
+
+        /* Subtle focus states for accessibility */
+        a:focus {
+            outline: 2px solid #3498db;
+            outline-offset: 2px;
+        }
+
+        /* Clean scrollbar on webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <div class="header-content">
             <img src="pic.jpeg" alt="Profile Picture" class="profile-pic">
-            <div>
+            <div class="header-info">
                 <h1>Vasif Vahidov</h1>
                 <p>Software Engineer</p>
-                <p>
-                    📧 vasif [dot] vahidov [at] gmail [dot] com<br>
-                    📍 Bavaria, Germany
-                </p>                            
+                <div class="contact-info">
+                    <p>📧 vasif [dot] vahidov [at] gmail [dot] com</p>
+                    <p>📍 Bavaria, Germany</p>
+                </div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/vasifvahidov/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/vasifvahidov" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/w00tech/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.researchgate.net/profile/Vasif-Vahidov" target="_blank" title="ResearchGate"><i class="fas fa-book"></i></a>
+                    <a href="https://www.linkedin.com/in/vasifvahidov/" target="_blank" title="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/vasifvahidov" target="_blank" title="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/w00tech/" target="_blank" title="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.researchgate.net/profile/Vasif-Vahidov" target="_blank" title="ResearchGate"><i
+                            class="fas fa-book"></i></a>
                 </div>
             </div>
         </div>
     </header>
+
     <main>
-        <section>
+        <section class="about">
             <h2>About</h2>
             <p>
-                I'm a software engineer with skills in Python, Java, and ERP systems, and a strong focus on business and data analysis using Power BI and Power Query. I create tutorials and write tech blogs, and I plan to learn and teach cloud computing as I continue to grow in my career.
+                I'm a software engineer with skills in Python, Java, and ERP systems, and a strong focus on business and
+                data analysis using Power BI and Power Query. I create tutorials and write tech blogs, and I plan to
+                learn and teach cloud computing as I continue to grow in my career.
             </p>
             <p>
-                I hold a B.Sc. in Computer Science from ADA University and am now studying Digital Technology and Management at OTH Amberg-Weiden in Bavaria, Germany. I also work as a IT working student at GT Elektronik GmbH, where I gain practical experience while pursuing my studies.
+                I hold a B.Sc. in Computer Science from ADA University and am now studying Digital Technology and
+                Management at OTH Amberg-Weiden in Bavaria, Germany. I also work as a IT working student at GT
+                Elektronik GmbH, where I gain practical experience while pursuing my studies.
             </p>
         </section>
+
         <section>
-            <h2>My Projects</h2>             
+            <h2>My Projects</h2>
             <div class="project">
                 <div class="project-info">
                     <h3>
-                        <a href="https://github.com/VasifVahidov/Arcade-Game-Console" class="repo-link">
+                        <a href="https://flovo.xyz" target="_blank">
+                            Flovo AI 🧠
+                        </a>
+                    </h3>
+                    <p class="project-tech">JavaScript, HTML, CSS, GPT API</p>
+                    <p class="project-description">
+                        A roadmap/infographic generator powered by AI that simplifies any topic into tree structures.
+                        Built to help users understand new subjects faster.
+                    </p>
+                </div>
+                <a href="https://github.com/VasifVahidov/Flovo.XYZ" class="github-icon" title="View Repository"
+                    target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+
+            <div class="project">
+                <div class="project-info">
+                    <h3>
+                        <a href="https://capycapynews.github.io" target="_blank">
+                            CapyCapyNews 📊
+                        </a>
+                    </h3>
+                    <p class="project-tech">Node.js, Express, n8n, HuggingFace, RSS</p>
+                    <p class="project-description">
+                        A smart political news analyzer that detects bias, classifies topics (like [WAGE], [MOVE],
+                        [LIFE]), and visualizes it with a unique bias bar. Built to be transparent and useful for the
+                        average citizen.
+                    </p>
+                </div>
+                <a href="https://github.com/VasifVahidov/capycapynews" class="github-icon" title="View Repository"
+                    target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+
+            <div class="project">
+                <div class="project-info">
+                    <h3>
+                        <a href="https://github.com/VasifVahidov/Arcade-Game-Console">
                             Arcade Game Console 🎮
                         </a>
                     </h3>
-                    <p><strong>C# 👾</strong></p>
-                    <p>Bluetooth Game Controller that uses Bluetooth to turn your phone into an arcade joystick.</p>
+                    <p class="project-tech">C# 👾</p>
+                    <p class="project-description">Bluetooth Game Controller that uses Bluetooth to turn your phone into
+                        an arcade joystick.</p>
                 </div>
-                <a href="https://github.com/VasifVahidov/Arcade-Game-Console" class="github-icon" title="View Repository">
+                <a href="https://github.com/VasifVahidov/Arcade-Game-Console" class="github-icon"
+                    title="View Repository">
                     <i class="fab fa-github"></i>
                 </a>
-            </div>            
-            
+            </div>
+
             <div class="project">
                 <div class="project-info">
-                  <h3>
-                    <a href="#" class="repo-link">
-                      Frequency Shop 🛒
-                    </a>
-                  </h3>
-                  <p><strong>Google Colab, Python, Jupyter Notebook 📓</strong></p>
-                  <p>A Python-based solution for grocery expense tracking and optimization using data analysis and visualization.</p>
+                    <h3>
+                        <a href="#">
+                            Frequency Shop 🛒
+                        </a>
+                    </h3>
+                    <p class="project-tech">Google Colab, Python, Jupyter Notebook 📓</p>
+                    <p class="project-description">A Python-based solution for grocery expense tracking and optimization
+                        using data analysis and visualization.</p>
                 </div>
                 <a href="#" class="github-icon" title="View Repository">
-                  <i class="fab fa-github"></i>
+                    <i class="fab fa-github"></i>
                 </a>
-              </div>
-              
-            
+            </div>
+
             <div class="project">
                 <div class="project-info">
-                  <h3>
-                    <a href="#" class="repo-link">
-                      ToDo App w/SpringBoot ✅
-                    </a>
-                  </h3>
-                  <p><strong>Java ☕</strong></p>
-                  <p>A ToDoApp using Spring Boot and Hibernate to manage tasks with a REST API backend.</p>
+                    <h3>
+                        <a href="#">
+                            ToDo App w/SpringBoot ✅
+                        </a>
+                    </h3>
+                    <p class="project-tech">Java ☕</p>
+                    <p class="project-description">A ToDoApp using Spring Boot and Hibernate to manage tasks with a REST
+                        API backend.</p>
                 </div>
                 <a href="#" class="github-icon" title="View Repository">
-                  <i class="fab fa-github"></i>
+                    <i class="fab fa-github"></i>
                 </a>
-              </div>              
+            </div>
         </section>
-        
+
         <section id="blogs">
-            <h2><a href="/blog" class="repo-link blog-header">→ Blogs</a></h2>
-            <p>Latest updates..</p>
+            <h2><a href="/blog" class="blog-header">→ Blogs</a></h2>
+            <p class="blogs-intro">Latest updates..</p>
 
             <div class="blog-item">
-                <h3><a href="/blog/FrequencyShop" class="repo-link">Master Your Grocery Budget with FrequencyShop 💡</a></h3>
-                <p>A Guide for Students: FrequencyShop helps you manage your grocery budget and learn Python. With tools like NumPy, Matplotlib, and Seaborn, it simplifies expense tracking and budgeting, perfect for beginners and tech enthusiasts!</p>
+                <h3><a href="/blog/FrequencyShop">Master Your Grocery Budget with FrequencyShop 💡</a></h3>
+                <p>A Guide for Students: FrequencyShop helps you manage your grocery budget and learn Python. With tools
+                    like NumPy, Matplotlib, and Seaborn, it simplifies expense tracking and budgeting, perfect for
+                    beginners and tech enthusiasts!</p>
             </div>
             <div class="blog-item">
-                <h3><a href="/blog/AWS-roadmap" class="repo-link">Roadmap to AWS Cloud Practitioner: Your Guide to Cloud Success 🛣️</a></h3>
-                <p>Dive into the AWS certification journey with our comprehensive guide, exploring AWS fundamentals, certification benefits, and hands-on tutorials to boost your cloud computing career.</p>
+                <h3><a href="/blog/AWS-roadmap">Roadmap to AWS Cloud Practitioner: Your Guide to Cloud Success 🛣️</a>
+                </h3>
+                <p>Dive into the AWS certification journey with our comprehensive guide, exploring AWS fundamentals,
+                    certification benefits, and hands-on tutorials to boost your cloud computing career.</p>
             </div>
         </section>
-        
     </main>
+
     <footer>
         <p>© 2025 Vasif Vahidov. All Rights Reserved.</p>
     </footer>
 </body>
+
 </html>
