@@ -165,6 +165,41 @@
             font-size: 1.05rem;
         }
 
+        /* About section */
+        .about-content {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        .about-content.collapsed {
+            max-height: 120px;
+        }
+
+        .about-content.expanded {
+            max-height: none;
+        }
+
+        .read-more-btn {
+            color: var(--secondary-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .read-more-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .read-more-btn:focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+
         /* Education section */
         .education-item {
             padding: 20px 0;
@@ -508,43 +543,29 @@
     <main>
         <section class="about">
             <h2>About Me</h2>
-            <p>
-                Software engineer with hands-on experience in Python, Java, and C++, currently expanding expertise in
-                DevOps, cloud technologies, and AI-driven automation. I focus on building systems that bridge technical
-                innovation with practical business value.
-            </p>
-            <p>
-                Currently pursuing B.Sc. in Digital Technology and Management at OTH Amberg-Weiden (Bavaria, Germany)
-                while working as an IT student at GT Elektronik GmbH, where I apply theoretical knowledge to real-world
-                challenges. My recent work involves LLMs, automation frameworks, and cloud infrastructure.
-            </p>
-            <p>
-                I hold a B.Sc. in Computer Science from ADA University (Baku, Azerbaijan) and am passionate about
-                sharing knowledge through technical writing and open-source contributions. My international educational
-                background provides me with diverse perspectives on technology and business practices.
-            </p>
-        </section>
-
-        <section>
-            <h2>Education</h2>
-            <div class="education-item">
-                <div class="education-content">
-                    <h3>B.Sc. Digital Technology and Management</h3>
-                    <p class="education-institution">OTH Amberg-Weiden • Bavaria, Germany</p>
-                    <p class="education-period">2024 - Present</p>
-                    <p class="education-description">Second bachelor's degree focusing on digital transformation,
-                        technology management, and business innovation in modern enterprises.</p>
-                </div>
+            <div class="about-content collapsed" id="aboutContent">
+                <p>
+                    Software engineer with hands-on experience in Python, Java, and C++, currently expanding expertise
+                    in
+                    DevOps, cloud technologies, and AI-driven automation. I focus on building systems that bridge
+                    technical
+                    innovation with practical business value.
+                </p>
+                <p>
+                    Currently pursuing B.Sc. in Digital Technology and Management at OTH Amberg-Weiden (Bavaria,
+                    Germany)
+                    while working as an IT student at GT Elektronik GmbH, where I apply theoretical knowledge to
+                    real-world
+                    challenges. My recent work involves LLMs, automation frameworks, and cloud infrastructure.
+                </p>
+                <p>
+                    I hold a B.Sc. in Computer Science from ADA University (Baku, Azerbaijan) and am passionate about
+                    sharing knowledge through technical writing and open-source contributions. My international
+                    educational
+                    background provides me with diverse perspectives on technology and business practices.
+                </p>
             </div>
-            <div class="education-item">
-                <div class="education-content">
-                    <h3>B.Sc. Computer Science</h3>
-                    <p class="education-institution">ADA University • Baku, Azerbaijan</p>
-                    <p class="education-period">2014-2019</p>
-                    <p class="education-description">Strong foundation in software engineering, algorithms, data
-                        structures, and computer systems.</p>
-                </div>
-            </div>
+            <button class="read-more-btn" id="readMoreBtn" onclick="toggleAbout()">Read More</button>
         </section>
 
         <section>
@@ -716,8 +737,25 @@
     </div>
 
     <footer>
-        <p>© 2025 Vasif Vahidov</p>
+        <p>© 2025 Vasif Vahidov. Built with modern web standards and attention to detail.</p>
     </footer>
+
+    <script>
+        function toggleAbout() {
+            const content = document.getElementById('aboutContent');
+            const btn = document.getElementById('readMoreBtn');
+
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                content.classList.add('expanded');
+                btn.textContent = 'Read Less';
+            } else {
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                btn.textContent = 'Read More';
+            }
+        }
+    </script>
 </body>
 
 </html>
