@@ -4,8 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — Vasif Vahidov</title>
+  <title>Technical Writing — Vasif Vahidov</title>
+  <meta name="description"
+    content="Technical tutorials, industry insights, and development guides by Vasif Vahidov - Software Engineer">
+  <link rel="icon" href="icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -13,163 +17,606 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --text-primary: #333;
+      --text-secondary: #666;
+      --text-muted: #999;
+      --background: #fafafa;
+      --card-background: #ffffff;
+      --border-color: #e1e5e9;
+      --hover-background: #f8f9fa;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #fafafa;
-      color: #333;
-      max-width: 1000px;
+      background-color: var(--background);
+      color: var(--text-primary);
+      max-width: 1100px;
       margin: 0 auto;
       padding: 40px 20px;
+      line-height: 1.6;
     }
 
     header {
+      background: var(--card-background);
+      padding: 40px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       text-align: center;
-      padding: 20px 0;
     }
 
     header h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #2c3e50;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .blog-stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section {
+      background: var(--card-background);
+      padding: 35px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     h2 {
-      font-size: 1.5rem;
-      color: #2c3e50;
-      margin-bottom: 20px;
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      margin-bottom: 25px;
       font-weight: 600;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+
+    .section-description {
+      color: var(--text-secondary);
+      margin-bottom: 25px;
+      font-size: 1.05rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
     }
 
     .card {
-      background: white;
-      border-radius: 8px;
-      padding: 20px;
-      border: 1px solid #e1e5e9;
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--card-background);
+      border-radius: 10px;
+      padding: 25px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--secondary-color), #2980b9);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-color: var(--secondary-color);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
     }
 
     .card h4 {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 600;
       margin-bottom: 8px;
+      flex: 1;
     }
 
     .card h4 a {
-      color: #2c3e50;
+      color: var(--primary-color);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .card h4 a:hover {
-      color: #3498db;
+      color: var(--secondary-color);
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .card p {
-      color: #666;
+      color: var(--text-secondary);
       font-size: 0.95rem;
-      line-height: 1.5;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 15px;
+    }
+
+    .tag {
+      background: var(--hover-background);
+      color: var(--text-secondary);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .status-badge {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .status-published {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .status-coming-soon {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--accent-color);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
     }
 
     .action-buttons {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin-top: 40px;
+      gap: 20px;
     }
 
     .btn {
-      background-color: #2c3e50;
+      background-color: var(--primary-color);
       color: white;
-      padding: 10px 20px;
+      padding: 12px 24px;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: 500;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .btn:hover {
       background-color: #34495e;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary-color);
+    }
+
+    .btn-secondary:hover {
+      background-color: #2980b9;
+    }
+
+    .newsletter-signup {
+      background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+      color: white;
+      text-align: center;
+      padding: 35px;
+      border-radius: 12px;
+      margin: 30px 0;
+    }
+
+    .newsletter-signup h3 {
+      color: white;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .newsletter-signup p {
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .newsletter-form button {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.2s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: rgba(255, 255, 255, 0.3);
     }
 
     footer {
       text-align: center;
       padding: 30px 0;
-      color: #999;
+      color: var(--text-muted);
       font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 15px;
+      }
+
+      header,
+      .section {
+        padding: 25px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .blog-stats {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+
+    /* Accessibility */
+    a:focus {
+      outline: 2px solid var(--secondary-color);
+      outline-offset: 2px;
+    }
+
+    /* Loading animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section,
+    .card {
+      animation: fadeIn 0.6s ease-out;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Exploring Ideas</h1>
+    <h1><i class="fas fa-code"></i> Technical Writing</h1>
+    <p class="header-subtitle">Tutorials, insights, and guides on software development, cloud technologies, and AI</p>
+    <div class="blog-stats">
+      <div class="stat-item">
+        <i class="fas fa-book-open"></i>
+        <span>8+ Articles</span>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-tags"></i>
+        <span>Multiple Topics</span>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-clock"></i>
+        <span>Regular Updates</span>
+      </div>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>Learning Journey | DIY Tutorials</h2>
+    <section class="section">
+      <h2><i class="fas fa-star"></i> Featured Articles</h2>
+      <p class="section-description">In-depth tutorials and project breakdowns that showcase practical development
+        skills</p>
       <div class="grid">
         <div class="card">
-          <h4><a href="/blog/FrequencyShop">Frequency Shop 🛒</a></h4>
-          <p>A Python-based smart grocery spending tool with charts and visual analytics.</p>
+          <div class="featured-badge">Featured</div>
+          <div class="card-header">
+            <h4><a href="/blog/FrequencyShop">Master Your Grocery Budget with FrequencyShop</a></h4>
+          </div>
+          <div class="card-meta">
+            <span><i class="fas fa-calendar"></i> Dec 2024</span>
+            <span><i class="fas fa-clock"></i> 8 min read</span>
+            <span class="status-badge status-published">Published</span>
+          </div>
+          <p>Complete guide to building a Python-based expense tracking system. Learn data analysis with NumPy,
+            Matplotlib, and Seaborn while creating a practical budgeting tool.</p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Matplotlib</span>
+          </div>
         </div>
+
         <div class="card">
-          <h4><a href="/blog/CapyCapyNews">CapyCapyNews 📊</a></h4>
-          <p>Bias-aware news platform built with HuggingFace + n8n + Node.js.</p>
+          <div class="card-header">
+            <h4><a href="/blog/AWS-roadmap">AWS Cloud Practitioner Certification Roadmap</a></h4>
+          </div>
+          <div class="card-meta">
+            <span><i class="fas fa-calendar"></i> Nov 2024</span>
+            <span><i class="fas fa-clock"></i> 12 min read</span>
+            <span class="status-badge status-published">Published</span>
+          </div>
+          <p>Comprehensive study guide for AWS certification covering cloud fundamentals, hands-on tutorials, and career
+            development strategies with real-world examples.</p>
+          <div class="card-tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Cloud Computing</span>
+            <span class="tag">Certification</span>
+            <span class="tag">DevOps</span>
+          </div>
         </div>
+
         <div class="card">
-          <h4><a href="/blog/TechTrends">Latest in Tech 🔧</a></h4>
-          <p>Stay updated with trends, releases, and industry news.</p>
-        </div>
-        <div class="card">
-          <h4><a href="/blog/Travel">Travel Packing Guide ✈️</a></h4>
-          <p>Efficient packing for minimalist, modern explorers.</p>
-        </div>
-        <div class="card">
-          <h4><a href="/blog/AWS-roadmap">AWS Roadmap 🚀</a></h4>
-          <p>Your path to cloud certification and infrastructure knowledge.</p>
+          <div class="card-header">
+            <h4><a href="/blog/CapyCapyNews">Building CapyCapyNews: AI-Powered Bias Detection</a></h4>
+          </div>
+          <div class="card-meta">
+            <span><i class="fas fa-calendar"></i> Jan 2025</span>
+            <span><i class="fas fa-clock"></i> 10 min read</span>
+            <span class="status-badge status-published">Published</span>
+          </div>
+          <p>Deep dive into creating a news analysis platform using HuggingFace transformers, Node.js, and n8n
+            automation. Learn about bias detection algorithms and data visualization.</p>
+          <div class="card-tags">
+            <span class="tag">AI/ML</span>
+            <span class="tag">HuggingFace</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">NLP</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section style="margin-top: 40px;">
-      <h2>Fresh Reads (Don't take it to the heart)</h2>
+    <section class="section">
+      <h2><i class="fas fa-lightbulb"></i> Development Tutorials</h2>
+      <p class="section-description">Step-by-step guides covering modern development practices and emerging technologies
+      </p>
       <div class="grid">
         <div class="card">
-          <h4><a href="/blog/AI-Advancements">AI Advancements 🤖</a></h4>
-          <p>Exploring the future of artificial intelligence and its real impact.</p>
+          <div class="card-header">
+            <h4><a href="/blog/spring-boot-rest-api">Building Enterprise REST APIs with Spring Boot</a></h4>
+          </div>
+          <div class="card-meta">
+            <span><i class="fas fa-calendar"></i> Coming Soon</span>
+            <span><i class="fas fa-clock"></i> 15 min read</span>
+            <span class="status-badge status-coming-soon">In Progress</span>
+          </div>
+          <p>Complete tutorial on building scalable REST APIs using Spring Boot, Hibernate, and best practices for
+            enterprise applications. Includes authentication and testing.</p>
+          <div class="card-tags">
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Hibernate</span>
+          </div>
         </div>
+
         <div class="card">
-          <h4><a href="/blog/Cloud-Architecture">Cloud Architecture ☁️</a></h4>
-          <p>Design principles for scalable and resilient cloud systems.</p>
+          <div class="card-header">
+            <h4><a href="/blog/llm-automation">Automation with Large Language Models</a></h4>
+          </div>
+          <div class="card-meta">
+            <span><i class="fas fa-calendar"></i> Coming Soon</span>
+            <span><i class="fas fa-clock"></i> 12 min read</span>
+            <span class="status-badge status-coming-soon">In Progress</span>
+          </div>
+          <p>Practical guide to integrating GPT APIs and other LLMs into automation workflows. Learn prompt engineering,
+            API integration, and real-world use cases.</p>
+          <div class="card-tags">
+            <span class="tag">AI/ML</span>
+            <span class="tag">GPT API</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Python</span>
+          </div>
         </div>
+
         <div class="card">
-          <h4><a href="/blog/Remote-Work-Tips">Remote Work Tips 🏡</a></h4>
-          <p>Best practices to keep your flow alive while working from anywhere.</p>
-        </div>
-        <div class="card">
-          <h4><a href="/blog/Blockchain-Explained">Blockchain Explained 🔗</a></h4>
-          <p>A human-readable breakdown of how blockchain actually works.</p>
+          <div class="card-header">
+            <h4><a href="/blog/docker-deployment">Container Deployment Strategies</a></h4>
+          </div>
+          <div class="card-meta">
+            <span><i class="fas fa-calendar"></i> Coming Soon</span>
+            <span><i class="fas fa-clock"></i> 10 min read</span>
+            <span class="status-badge status-coming-soon">Planned</span>
+          </div>
+          <p>Modern deployment practices using Docker, Kubernetes, and CI/CD pipelines. Learn container orchestration
+            and scalable deployment strategies.</p>
+          <div class="card-tags">
+            <span class="tag">Docker</span>
+            <span class="tag">DevOps</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Kubernetes</span>
+          </div>
         </div>
       </div>
     </section>
+
+    <section class="section">
+      <h2><i class="fas fa-chart-line"></i> Industry Insights</h2>
+      <p class="section-description">Analysis of current trends, emerging technologies, and their practical applications
+      </p>
+      <div class="grid">
+        <div class="card">
+          <div class="card-header">
+            <h4><a href="/blog/ai-development-trends">AI in Software Development: 2025 Outlook</a></h4>
+          </div>
+          <div class="card-meta">
+            <span><i class="fas fa-calendar"></i> Coming Soon</span>
+            <span><i class="fas fa-clock"></i> 8 min read</span>
+            <span class="status-badge status-coming-soon">Planned</span>
+          </div>
+          <p>Exploring how AI tools are reshaping software development workflows, from code generation to testing and
+            deployment automation.</p>
+          <div class="card-tags">
+            <span class="tag">AI/ML</span>
+            <span class="tag">Industry Trends</span>
+            <span class="tag">Future Tech</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4><a href="/blog/cloud-architecture-patterns">Modern Cloud Architecture Patterns</a></h4>
+          </div>
+          <div class="card-meta">
+            <span><i class="fas fa-calendar"></i> Coming Soon</span>
+            <span><i class="fas fa-clock"></i> 14 min read</span>
+            <span class="status-badge status-coming-soon">Planned</span>
+          </div>
+          <p>Design principles for building scalable, resilient cloud systems. Cover microservices, serverless
+            architectures, and multi-cloud strategies.</p>
+          <div class="card-tags">
+            <span class="tag">Cloud Architecture</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Microservices</span>
+            <span class="tag">Serverless</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4><a href="/blog/remote-development-best-practices">Remote Development: Tools and Workflows</a></h4>
+          </div>
+          <div class="card-meta">
+            <span><i class="fas fa-calendar"></i> Coming Soon</span>
+            <span class="status-badge status-coming-soon">Planned</span>
+          </div>
+          <p>Essential tools, practices, and workflows for effective remote software development. Focus on productivity,
+            collaboration, and code quality.</p>
+          <div class="card-tags">
+            <span class="tag">Remote Work</span>
+            <span class="tag">Productivity</span>
+            <span class="tag">Development Tools</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="newsletter-signup">
+      <h3><i class="fas fa-envelope"></i> Stay Updated</h3>
+      <p>Get notified when I publish new technical tutorials and insights</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </div>
+    </div>
 
     <div class="action-buttons">
-      <a href="/" class="btn">← Home</a>
-      <a href="mailto:vasifvvahidov@gmail.com" class="btn">Contact</a>
+      <a href="/" class="btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+      <a href="mailto:vasifvvahidov@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Me</a>
     </div>
   </main>
 
   <footer>
-    <p>© 2025 Vasif Vahidov. All Rights Reserved.</p>
+    <p>© 2025 Vasif Vahidov. Sharing knowledge through code and words.</p>
   </footer>
 </body>
 
