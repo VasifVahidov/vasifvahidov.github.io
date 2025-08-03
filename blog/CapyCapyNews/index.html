@@ -1,0 +1,986 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building CapyCapyNews: My Journey with Free LLMs and Semantic News Analysis</title>
+    <meta name="author" content="Vasif Vahidov">
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --text-muted: #7f8c8d;
+            --bg-color: #fafafa;
+            --code-bg: #2d3748;
+            --border-color: #e1e5e9;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .blog-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="40%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-meta i {
+            margin-right: 8px;
+        }
+
+        /* Table of Contents */
+        .toc-container {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .toc-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .toc-title i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+
+        .toc-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 5px 0;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .toc-list a:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .toc-list a.active {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .blog-content {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Typography */
+        .blog-content h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            position: relative;
+        }
+
+        .blog-content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .blog-content h3 i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .blog-content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            position: relative;
+            margin: 25px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-header {
+            background: var(--code-bg);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .code-lang {
+            display: flex;
+            align-items: center;
+        }
+
+        .code-lang i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        pre {
+            background: var(--code-bg) !important;
+            margin: 0 !important;
+            padding: 20px !important;
+            overflow-x: auto;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+            font-weight: normal;
+        }
+
+        pre code {
+            color: white !important;
+        }
+
+        /* Lists */
+        .blog-content ul,
+        .blog-content ol {
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+
+        .blog-content li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .blog-content li strong {
+            color: var(--primary-color);
+        }
+
+        /* Special Elements */
+        .highlight-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '\f0eb';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            left: -12px;
+            background: var(--secondary-color);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .highlight-box h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Tech Stack Grid */
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .tech-item {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-item strong {
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Navigation */
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            margin: 50px 0 0 0;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-home i {
+            margin-right: 8px;
+        }
+
+        /* Progress Bar */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .sidebar {
+                position: static;
+                order: -1;
+            }
+
+            .toc-container {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .blog-header {
+                padding: 40px 0;
+            }
+
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+
+            .blog-content {
+                padding: 25px 20px;
+            }
+
+            .tech-stack {
+                grid-template-columns: 1fr;
+            }
+
+            pre {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--secondary-color);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reading-progress" id="reading-progress"></div>
+
+    <header class="blog-header">
+        <div class="container">
+            <h1>Building CapyCapyNews: My Journey with Free LLMs and Semantic News Analysis</h1>
+            <div class="blog-meta">
+                <i class="fas fa-calendar"></i> Posted on August 8, 2025 by Vasif Vahidov
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-layout">
+            <aside class="sidebar">
+                <nav class="toc-container">
+                    <div class="toc-title">
+                        <i class="fas fa-list"></i>
+                        Table of Contents
+                    </div>
+                    <ul class="toc-list">
+                        <li><a href="#motivation">The Problem</a></li>
+                        <li><a href="#open-source">Why Open Source</a></li>
+                        <li><a href="#tech-stack">Tech Stack</a></li>
+                        <li><a href="#semantic-search">Semantic Search</a></li>
+                        <li><a href="#implementation">Implementation</a></li>
+                        <li><a href="#learnings">What I Learned</a></li>
+                        <li><a href="#structure">Project Structure</a></li>
+                        <li><a href="#next-steps">What's Next</a></li>
+                        <li><a href="#setup">Try It Yourself</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="blog-content">
+                <p>So I was reading through various German news sources last week, and I had this moment where I
+                    realized I was consuming article after article about Bundestag decisions, but I had absolutely no
+                    clue how any of it actually affected me or anyone I know. Like, great, the coalition passed some new
+                    law—but does that mean my rent goes up? Do I need to change how I file taxes? And where exactly does
+                    this even fit on the political spectrum?</p>
+
+                <p>That's when I decided to build something about it instead of just wondering. But not just any news
+                    analyzer—I wanted something that could automatically pull articles from publicly available RSS feeds
+                    and tag them with WHO gets affected, HOW they're affected, WHERE it happens, and even what political
+                    lean the content might have. Most importantly, I wanted to explore <strong>semantic similarity
+                        search using embedding vectors</strong>—a fascinating ML technique that can find meaningful
+                    connections between different pieces of text.</p>
+
+                <h2 id="motivation"><i class="fas fa-lightbulb"></i> The Problem That Actually Motivated Me</h2>
+
+                <p>Most news platforms are terrible at explaining impact. They'll tell you <em>what</em> happened, maybe
+                    even <em>why</em>, but rarely <em>who gets affected</em> and <em>how badly</em>. I wanted something
+                    that could automatically process articles from publicly available news feeds, then output: "This
+                    affects students in Bavaria by potentially increasing their tax refunds by €200" along with
+                    contextual information about the political perspective.</p>
+
+                <div class="highlight-box">
+                    <h4>Key Insight</h4>
+                    <p>Specific. Actionable. Automatically updated. Not just "economists say this could have
+                        implications." Plus, this seemed like a perfect educational project to learn about semantic
+                        similarity search, embedding vectors, and automated content analysis—skills I could apply to
+                        many other projects later.</p>
+                </div>
+
+                <h2 id="open-source"><i class="fas fa-code-branch"></i> Why I Went Full Open Source</h2>
+
+                <p>I could have just used GPT-4 and called it a day, but where's the fun in that? Plus:</p>
+                <ul>
+                    <li>I'm a broke grad student</li>
+                    <li>I wanted to actually learn something</li>
+                    <li>Vendor lock-in gives me anxiety</li>
+                    <li>Free stuff is better stuff</li>
+                </ul>
+                <p>So I decided to build the whole thing using only free, open-source tools. Turns out, it's totally
+                    doable and incredibly educational.</p>
+
+                <h2 id="tech-stack"><i class="fas fa-layer-group"></i> The Stack I Ended Up With</h2>
+
+                <p>After way too much experimentation, here's what actually worked:</p>
+
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <strong>Frontend</strong>
+                        Pure HTML/CSS/JavaScript with Tailwind (lightweight and educational)
+                    </div>
+                    <div class="tech-item">
+                        <strong>News Fetching</strong>
+                        Generic RSS parser for publicly available news feeds
+                    </div>
+                    <div class="tech-item">
+                        <strong>Text Processing</strong>
+                        spaCy for German language processing, BeautifulSoup for HTML cleanup
+                    </div>
+                    <div class="tech-item">
+                        <strong>Embeddings</strong>
+                        sentence-transformers with multilingual models for semantic similarity
+                    </div>
+                    <div class="tech-item">
+                        <strong>Vector Search</strong>
+                        FAISS for efficient similarity search (this was the fun part!)
+                    </div>
+                    <div class="tech-item">
+                        <strong>LLM</strong>
+                        TinyLLaMA 1.1B (surprisingly capable for educational experiments)
+                    </div>
+                    <div class="tech-item">
+                        <strong>Content Analysis</strong>
+                        Custom classifier for contextual analysis
+                    </div>
+                    <div class="tech-item">
+                        <strong>Hosting</strong>
+                        Simple static hosting with serverless functions for API calls
+                    </div>
+                </div>
+
+                <h2 id="semantic-search"><i class="fas fa-search"></i> How Semantic Similarity Search Actually Works
+                </h2>
+
+                <p>The really exciting part of this project was implementing semantic similarity search using embedding
+                    vectors. This is a powerful technique that can find meaningful connections between different pieces
+                    of text, even when they use completely different words.</p>
+
+                <div class="highlight-box">
+                    <h4>Core Concept</h4>
+                    <p>Instead of matching exact keywords, we convert text into high-dimensional vectors that capture
+                        semantic meaning. Similar concepts cluster together in this vector space, allowing us to find
+                        articles about "student financial aid" even when searching for "university cost support."</p>
+                </div>
+
+                <h2 id="implementation"><i class="fas fa-cogs"></i> Implementation Details</h2>
+
+                <h3><i class="fab fa-js"></i> JavaScript: RSS Feed Fetching</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-lang">
+                            <i class="fab fa-js"></i>
+                            JavaScript
+                        </div>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <pre><code class="language-javascript">// Generic RSS fetching from publicly available feeds
+const PUBLIC_RSS_FEEDS = [
+  'https://example-news-site.com/rss',
+  'https://another-public-feed.com/xml/rss',
+  // Add any publicly available RSS feeds
+];
+
+async function fetchPublicNewsFeeds() {
+  const articles = [];
+  
+  for (const feedUrl of PUBLIC_RSS_FEEDS) {
+    try {
+      // Use a CORS proxy for educational purposes
+      const response = await fetch(`/api/rss-proxy?url=${encodeURIComponent(feedUrl)}`);
+      const rssData = await response.text();
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(rssData, 'text/xml');
+      
+      const items = xmlDoc.getElementsByTagName('item');
+      for (let item of items) {
+        const article = {
+          title: item.querySelector('title')?.textContent,
+          content: item.querySelector('description')?.textContent,
+          url: item.querySelector('link')?.textContent,
+          pubDate: item.querySelector('pubDate')?.textContent
+        };
+        
+        // Clean HTML from description for analysis
+        article.content = cleanHtmlContent(article.content);
+        articles.push(article);
+      }
+    } catch (error) {
+      console.log(`RSS feed temporarily unavailable:`, error);
+    }
+  }
+  
+  return articles;
+}</code></pre>
+                </div>
+
+                <h3><i class="fab fa-python"></i> Python: The Semantic Search Engine</h3>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-lang">
+                            <i class="fab fa-python"></i>
+                            Python
+                        </div>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <pre><code class="language-python">from sentence_transformers import SentenceTransformer, util
+import json
+import torch
+import numpy as np
+
+# Using multilingual model for semantic similarity across languages
+model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
+
+def perform_semantic_similarity_search(article_text):
+    """
+    This is the core of semantic similarity search using embedding vectors.
+    Instead of keyword matching, we find conceptually similar content.
+    """
+    
+    # Load our curated impact patterns (this is the knowledge base)
+    with open("data/impact_patterns.json", "r", encoding='utf-8') as f:
+        impact_patterns = json.load(f)
+    
+    # Convert all patterns to embedding vectors (cache this in production)
+    pattern_texts = [pattern['text'] for pattern in impact_patterns]
+    pattern_embeddings = model.encode(pattern_texts, convert_to_tensor=True)
+    
+    # Convert the input article to an embedding vector
+    article_embedding = model.encode(article_text, convert_to_tensor=True)
+    
+    # Compute cosine similarity between article and all patterns
+    # This is where the magic happens - finding semantic similarity!
+    similarities = util.pytorch_cos_sim(article_embedding, pattern_embeddings)[0]
+    
+    # Get the top 3 most similar patterns
+    top_matches = torch.topk(similarities, k=3)
+    
+    results = []
+    for score, idx in zip(top_matches.values, top_matches.indices):
+        pattern = impact_patterns[idx.item()]
+        results.append({
+            'who': pattern['affected_group'],
+            'how': pattern['impact_type'], 
+            'where': pattern['location'],
+            'confidence': score.item(),
+            'pattern_text': pattern['text']
+        })
+    
+    return results</code></pre>
+                </div>
+
+                <p>This semantic similarity approach is incredibly powerful because it can match concepts like:</p>
+                <ul>
+                    <li>"Students face financial pressure" ↔ "University attendees struggle with costs"</li>
+                    <li>"Small businesses see tax relief" ↔ "Entrepreneurs benefit from reduced fiscal burden"</li>
+                    <li>"Munich residents experience housing issues" ↔ "Local citizens face accommodation challenges"
+                    </li>
+                </ul>
+
+                <h2 id="learnings"><i class="fas fa-brain"></i> What I Learned About Semantic Search</h2>
+
+                <ul>
+                    <li><strong>Embedding vectors are genuinely magical</strong>: The way sentence-transformers can find
+                        conceptual connections between completely different phrasings is mind-blowing.</li>
+                    <li><strong>JSON-based pattern matching scales surprisingly well</strong>: Instead of training a
+                        custom model, I curated a JSON database of impact patterns.</li>
+                    <li><strong>Multilingual embeddings open up global possibilities</strong>: The
+                        paraphrase-multilingual model handles German-English concept matching beautifully.</li>
+                    <li><strong>RSS parsing is still a valuable skill</strong>: Despite being "old tech," RSS feeds
+                        remain reliable for accessing structured content.</li>
+                    <li><strong>Cosine similarity is the unsung hero</strong>: The math behind finding similar vectors
+                        is surprisingly elegant.</li>
+                </ul>
+
+                <h2 id="structure"><i class="fas fa-folder-tree"></i> Project Structure</h2>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-lang">
+                            <i class="fas fa-folder"></i>
+                            Directory Structure
+                        </div>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <pre><code>capycapynews-educational/
+│
+├── index.html                # Main interface for educational demo
+├── script.js                 # Frontend logic and semantic search integration
+├── styles.css                # Custom styling (optional with Tailwind)
+├── capycapy_logo.png         # Project branding
+│
+├── api/
+│   ├── rss-proxy.js          # CORS-friendly RSS fetching for education
+│   ├── semantic-analysis.py  # Core semantic similarity implementation
+│   └── content-analyzer.py   # Context and pattern analysis
+│
+├── data/
+│   ├── impact_patterns.json      # Curated patterns for semantic matching
+│   ├── multilingual_examples.json # Cross-language pattern examples
+│   └── context_keywords.json     # Keywords for content categorization
+│
+├── utils/
+│   ├── embedding_manager.py      # Handle sentence transformer models
+│   ├── rss_parser.py             # Generic RSS parsing utilities
+│   ├── similarity_search.py      # FAISS integration for vector search
+│   └── text_preprocessing.py     # Content cleaning and preparation
+│
+├── notebooks/
+│   ├── semantic_similarity_exploration.ipynb  # Learning experiments
+│   ├── embedding_visualization.ipynb         # Vector space exploration
+│   └── pattern_analysis.ipynb               # Impact pattern development
+│
+└── docs/
+    ├── EDUCATIONAL_NOTES.md  # Learning objectives and concepts
+    ├── DEPLOYMENT_GUIDE.md  # How to set up your own version
+    └── EXTENSION_IDEAS.md   # Ideas for applying these techniques elsewhere</code></pre>
+                </div>
+
+                <h2 id="next-steps"><i class="fas fa-rocket"></i> What I'd Build Next</h2>
+
+                <p>This project taught me so much about semantic similarity search and embedding vectors that I'm
+                    already brainstorming other applications:</p>
+
+                <ul>
+                    <li><strong>Academic Paper Analyzer</strong>: Use the same semantic similarity approach to find
+                        connections between research papers</li>
+                    <li><strong>Customer Support Classifier</strong>: Analyze support tickets and route them based on
+                        semantic similarity</li>
+                    <li><strong>Content Recommendation Engine</strong>: Recommend content based on conceptual similarity
+                        rather than keywords</li>
+                    <li><strong>Multilingual Document Search</strong>: Build search that works across language barriers
+                    </li>
+                    <li><strong>Social Media Sentiment Tracker</strong>: Categorize posts by sentiment and impact</li>
+                </ul>
+
+                <h2 id="setup"><i class="fas fa-terminal"></i> Try It Yourself</h2>
+
+                <p>I've made the project available for educational purposes. The setup is designed to be
+                    learning-friendly:</p>
+
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-lang">
+                            <i class="fas fa-terminal"></i>
+                            Installation
+                        </div>
+                        <button class="copy-btn" onclick="copyCode(this)">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <pre><code class="language-bash">git clone [repo-url]
+cd capycapynews-educational
+
+# Install Python dependencies for semantic analysis
+pip install -r requirements.txt
+
+# Download the multilingual sentence transformer model
+python utils/download_models.py
+
+# Start the educational RSS proxy server
+node api/rss-proxy.js &
+
+# Serve the frontend (any simple HTTP server works)
+python -m http.server 8000
+# OR
+npx serve .</code></pre>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Important Note</h4>
+                    <p>This project is designed for educational purposes to learn about semantic similarity, embedding
+                        vectors, and automated content analysis. When using RSS feeds or any external content, always
+                        respect the terms of service and robots.txt of the source websites.</p>
+                </div>
+
+                <h2 id="resources"><i class="fas fa-book"></i> Resources for Learning More</h2>
+
+                <p>If this project sparked your interest in semantic similarity and embedding vectors, here are some
+                    great resources:</p>
+
+                <ul>
+                    <li><strong>Technical Deep Dives</strong>: "Attention Is All You Need" (Transformer paper),
+                        Sentence-BERT paper</li>
+                    <li><strong>Practical Applications</strong>: Pinecone's vector database tutorials, LangChain's
+                        documentation</li>
+                    <li><strong>Mathematical Foundations</strong>: Linear algebra focusing on vector spaces, cosine
+                        similarity</li>
+                </ul>
+
+                <hr style="margin: 50px 0; border: none; border-top: 1px solid var(--border-color);">
+
+                <p><em>Want to discuss semantic similarity, embedding vectors, or share what you've built with these
+                        techniques? Find me at <strong>vasifvvahidov@gmail.com</strong>. I'm always excited to see
+                        creative applications of these powerful ML concepts!</em></p>
+
+                <p><em>This project is open source and designed for educational purposes. Feel free to fork, modify, and
+                        use it as a foundation for your own semantic search experiments.</em></p>
+
+                <a href="/blog" class="back-home">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Blog
+                </a>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+
+    <script>
+        // Reading progress bar
+        function updateReadingProgress() {
+            const article = document.querySelector('.blog-content');
+            const scrollTop = window.pageYOffset;
+            const docHeight = article.offsetHeight;
+            const winHeight = window.innerHeight;
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            const scrollPercentRounded = Math.round(scrollPercent * 100);
+
+            document.getElementById('reading-progress').style.width = Math.min(scrollPercentRounded, 100) + '%';
+        }
+
+        // Table of contents active link
+        function updateActiveLink() {
+            const sections = document.querySelectorAll('h2[id]');
+            const tocLinks = document.querySelectorAll('.toc-list a');
+
+            let currentSection = '';
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 100) {
+                    currentSection = section.id;
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block').querySelector('code');
+            const textArea = document.createElement('textarea');
+            textArea.value = codeBlock.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            button.style.background = 'rgba(39, 174, 96, 0.2)';
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.background = 'transparent';
+            }, 2000);
+        }
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-list a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateReadingProgress();
+            updateActiveLink();
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateReadingProgress();
+            updateActiveLink();
+
+            // Initialize Prism.js if loaded
+            if (typeof Prism !== 'undefined') {
+                Prism.highlightAll();
+            }
+        });
+
+        // Add some interactive elements for better UX
+        document.querySelectorAll('.tech-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-3px) scale(1.02)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click-to-expand for long code blocks
+        document.querySelectorAll('.code-block pre').forEach(pre => {
+            if (pre.scrollHeight > 400) {
+                pre.style.maxHeight = '400px';
+                pre.style.overflow = 'hidden';
+
+                const expandBtn = document.createElement('button');
+                expandBtn.innerHTML = '<i class="fas fa-chevron-down"></i> Show more';
+                expandBtn.className = 'expand-code-btn';
+                expandBtn.style.cssText = `
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    background: rgba(0,0,0,0.7);
+                    color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 0.8rem;
+                `;
+
+                pre.parentElement.style.position = 'relative';
+                pre.parentElement.appendChild(expandBtn);
+
+                expandBtn.addEventListener('click', function () {
+                    if (pre.style.maxHeight === '400px') {
+                        pre.style.maxHeight = 'none';
+                        pre.style.overflow = 'auto';
+                        this.innerHTML = '<i class="fas fa-chevron-up"></i> Show less';
+                    } else {
+                        pre.style.maxHeight = '400px';
+                        pre.style.overflow = 'hidden';
+                        this.innerHTML = '<i class="fas fa-chevron-down"></i> Show more';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
